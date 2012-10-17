@@ -7,6 +7,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
+
 def plot_perceptron(neg_examples, pos_examples, mistakes0, mistakes1,
                     num_err_history, w, w_dist_history):
     """ The top-left plot shows the dataset and the classification boundary given by
@@ -37,33 +38,33 @@ def plot_perceptron(neg_examples, pos_examples, mistakes0, mistakes1,
    w_dist_history - A vector containing the L2-distance to a generously
        feasible weight vector for each iteration of learning so far.
        Empty if one has not been provided."""
-    
-    
+
+
     #f = plt.figure(1)
-    
+
     #plt.ion()
-    
+
     neg_correct_ind = np.setdiff1d(np.arange(np.size(neg_examples,0)),mistakes0)
     pos_correct_ind = np.setdiff1d(np.arange(np.size(pos_examples,0)),mistakes1)
-    
+
     plt.subplot(2,2,1)
     if np.size(neg_examples) > 0 and len(neg_correct_ind) > 0:
         plt.plot(neg_examples[neg_correct_ind, 0], neg_examples[neg_correct_ind,1], 'og')
-    
+
     if np.size(pos_examples) > 0 and len(pos_correct_ind) > 0:
         plt.plot(pos_examples[pos_correct_ind, 0], pos_examples[pos_correct_ind,1], 'sg')
-    
+
     if len(mistakes0) > 0:
         plt.plot(neg_examples[mistakes0,0], neg_examples[mistakes0,1], 'or')
-    
+
     if len(mistakes1) > 0:
         plt.plot(pos_examples[mistakes1,0], pos_examples[mistakes1,1], 'sr')
-    
+
     plt.title("Classifier")
-    
+
     # Plot the decision line
     plt.plot([-5,5],[(-w[2,0] + 5*w[0,0])/w[1,0], (-w[2,0] - 5*w[0,0])/w[1,0]],'k')
-    
+
     plt.axis([-1,1,-1,1])
     # Show the plot
     #plt.show()
@@ -74,12 +75,12 @@ def plot_perceptron(neg_examples, pos_examples, mistakes0, mistakes1,
     plt.title("Number of errors")
     plt.xlabel("Iteration")
     plt.ylabel("Number of errors")
-    
+
     plt.subplot(2,2,3)
     plt.plot(w_dist_history)
     plt.axis([-1, max(15, len(num_err_history)), 0, 15])
     plt.title("Distance")
     plt.xlabel("Iteration")
     plt.ylabel("Distance")
-    
+
     plt.show()
