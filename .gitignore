@@ -1,2 +1,4 @@
-*.mat
+.venv
 *.pyc
+*.swp
+*.swo
