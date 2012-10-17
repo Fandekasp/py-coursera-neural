@@ -42,7 +42,7 @@ def learn_perceptron(neg_examples_nobias, pos_examples_nobias,
     if len(w_gen_feas) != 0:
         w_dist_history.append(NP.linalg.norm(w - w_gen_feas))
 
-    while(num_errs > 0 and iteration < 1000):
+    while(num_errs > 0 and iteration < 20):
         iteration += 1
         w = update_weights(neg_examples, pos_examples, w)
 
