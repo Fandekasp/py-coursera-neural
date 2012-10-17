@@ -15,6 +15,18 @@ This should go without saying, but _use at your own
 risk_. Contributors are not responsible for lost assignment points due
 to bugs, etc.
 
+# How to use
+
+First, git clone the project, then
+
+    $ cd /path/to/py-coursera-neural/hw1
+    $ cp learn_perceptron.py.orig learn_perceptron.py
+
+Finally, complete the code, and execute it:
+
+    $ ./learn_perceptron.py
+
+
 Forks and pull requests welcome and encouraged!
 
 Contributors in chronological order
