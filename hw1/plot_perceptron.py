@@ -1,8 +1,11 @@
-#
-# plot_perceptron.py
-#
-# Plots information about a perceptron classifier on a 2-dimensional dataset
-#
+#!/usr/bin/env python
+# -*- coding:Utf-8 -*-
+
+"""
+plot_perceptron.py
+
+Plots information about a perceptron classifier on a 2-dimensional dataset
+"""
 
 import matplotlib.pyplot as plt
 import numpy as np

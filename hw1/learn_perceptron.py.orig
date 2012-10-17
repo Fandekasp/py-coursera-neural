@@ -1,6 +1,14 @@
+#!/usr/bin/env python
+# -*- coding:Utf-8 -*-
+
+import os.path
 import numpy as NP
 import scipy.io
-from plot_perceptron import *
+from plot_perceptron import plot_perceptron
+
+
+DATAFILES = [os.path.join('Datasets', 'dataset{0}.mat'.format(i))
+    for i in range(1, 5)]
 
 
 def learn_perceptron(neg_examples_nobias, pos_examples_nobias,
@@ -98,16 +106,18 @@ def update_weights(neg_examples, pos_examples, w_current):
     return w
 
 
-datafiles = ['dataset1.mat', 'dataset2.mat',
-             'dataset3.mat', 'dataset4.mat']
+def main():
+    for df in DATAFILES:
+        data = scipy.io.loadmat(df)
 
-for df in datafiles:
-    data = scipy.io.loadmat(df)
+        neg_examples_nobias = data['neg_examples_nobias']
+        pos_examples_nobias = data['pos_examples_nobias']
+        w_init = data['w_init']
+        w_gen_feas = data['w_gen_feas']
 
-    neg_examples_nobias = data['neg_examples_nobias']
-    pos_examples_nobias = data['pos_examples_nobias']
-    w_init = data['w_init']
-    w_gen_feas = data['w_gen_feas']
+        learn_perceptron(neg_examples_nobias, pos_examples_nobias,
+                         w_init, w_gen_feas)
 
-    learn_perceptron(neg_examples_nobias, pos_examples_nobias,
-                     w_init, w_gen_feas)
+
+if __name__ == '__main__':
+    main()
